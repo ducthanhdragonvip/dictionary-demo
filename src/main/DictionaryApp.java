@@ -29,6 +29,7 @@ public class DictionaryApp extends Application {
             Image icon = new Image("image/icon.png");
             stage.getIcons().add(icon);
             stage.centerOnScreen();
+            stage.setResizable(false);
 
             stage.setScene(sceneStore.getStartScene());
             stage.setOnCloseRequest(event -> {event.consume();
