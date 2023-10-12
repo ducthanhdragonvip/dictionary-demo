@@ -38,11 +38,24 @@
                </font>
             </Button>
             <BorderPane prefHeight="20.0" prefWidth="180.0" />
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" text="Search">
+            <Button fx:id="btnSearch" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" onAction="#setBtnSearch" prefHeight="60.0" prefWidth="180.0" text="Search">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/search-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <BorderPane prefHeight="20.0" prefWidth="180.0" />
+            <Button fx:id="translateButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btnParagraphTranslate" prefHeight="60.0" prefWidth="180.0" text="Translate Text">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/translate-icon.png" />
                      </image>
                   </ImageView>
                </graphic>
