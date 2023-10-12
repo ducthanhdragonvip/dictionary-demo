@@ -5,11 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainAppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainAppController">
    <children>
       <BorderPane layoutY="-5.0" prefHeight="64.0" prefWidth="1280.0" style="-fx-background-color: A5F1E9;" />
       <ImageView fitHeight="56.0" fitWidth="64.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
@@ -22,62 +22,71 @@
             <Font name="Segoe Fluent Icons" size="24.0" />
          </font>
       </Text>
-      <HBox layoutY="59.0" prefHeight="54.0" prefWidth="1280.0">
+      <VBox layoutY="59.0" prefHeight="600.0" prefWidth="180.0">
          <children>
-            <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="213.3" text="Home">
+            <BorderPane prefHeight="60.0" prefWidth="180.0" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" text="Home">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/home-icon.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="searchButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="213.3" text="Search">
+            <BorderPane prefHeight="20.0" prefWidth="180.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" text="Search">
                <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/search-icon.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="gameButton" layoutX="208.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="213.3" text="Game">
+            <BorderPane prefHeight="20.0" prefWidth="180.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" text="Game">
                <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/game-icon.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="407.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="213.3" text="Add Word">
+            <BorderPane prefHeight="20.0" prefWidth="180.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" text="Add Word">
                <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/add-icon.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="605.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="213.3" text="Config/Delete Word">
+            <BorderPane prefHeight="20.0" prefWidth="180.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" text="Config/Delete Word">
                <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/settings-icon.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
-            <Button fx:id="buttonGoBack" layoutX="804.0" layoutY="10.0" mnemonicParsing="false" onAction="#setButtonGoBack" prefHeight="54.0" prefWidth="213.3" text="Back">
+               </graphic>
+            </Button>
+            <BorderPane prefHeight="20.0" prefWidth="180.0" />
+            <Button fx:id="buttonGoBack" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="310.0" mnemonicParsing="false" onAction="#setButtonGoBack" prefHeight="60.0" prefWidth="180.0" text="Go Back">
                <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/back-icon.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+            </Button>
          </children>
-      </HBox>
+      </VBox>
+      <AnchorPane fx:id="mainPane" layoutX="180.0" layoutY="59.0" prefHeight="663.0" prefWidth="1100.0" />
    </children>
    
 </AnchorPane>
