@@ -1,0 +1,11 @@
+.AnchorPane {
+    -fx-background-color: #7CB9E8;
+}
+.button {
+    -fx-background-color: linear-gradient(to right,#b4caff,#72c5ff, #7ee9ff);
+    -fx-background-radius: 0 20 20 0;
+ }
+ .button:hover {
+    -fx-background-color: #07f7f7;
+    -fx-background-radius: 0 20 20 0;
+ }

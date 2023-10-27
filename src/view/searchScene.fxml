@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -10,6 +11,11 @@
       <AnchorPane layoutX="79.0" layoutY="91.0" prefHeight="555.0" prefWidth="866.0">
          <children>
             <ListView fx:id="wordList" layoutY="10.0" prefHeight="536.0" prefWidth="291.0" />
+            <AnchorPane layoutX="323.0" layoutY="-49.0" prefHeight="594.0" prefWidth="634.0">
+               <children>
+                  <TextArea layoutX="1.0" prefHeight="594.0" prefWidth="634.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
