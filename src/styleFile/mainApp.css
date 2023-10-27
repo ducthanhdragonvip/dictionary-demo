@@ -2,10 +2,14 @@
     -fx-background-color: #7CB9E8;
 }
 .button {
-    -fx-background-color: linear-gradient(to right,#b4caff,#72c5ff, #7ee9ff);
+    -fx-background-color: #E0FFFF;
     -fx-background-radius: 0 20 20 0;
  }
  .button:hover {
-    -fx-background-color: #07f7f7;
+    -fx-background-color: linear-gradient(to right,#b4caff,#72c5ff, #7ee9ff);
     -fx-background-radius: 0 20 20 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(45, 35, 66, 0.4), 10, 0, 0, 0);
+ }
+ .button:focus {
+    -fx-background-color: #07f7f7;
  }
