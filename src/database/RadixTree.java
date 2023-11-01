@@ -1,78 +1,98 @@
 package database;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Stack;
 public class RadixTree<V> {
-    private static final int NO_MISMATCH = -1;
+    private static final int NO_DIFF = -1;
 
-    private static int getFirstMismatchLetter(String word, String label) {
-        int Length = Math.min(word.length(),label.length());
-        for (int i = 0; i < Length; i++) {
-            if(word.charAt(i) != label.charAt(i))
+    private static int getFirstMissMatchLetter(String word, String label) {
+        int word_length = Math.min(word.length(), label.length());
+        for (int i = 0; i < word_length; i++) {
+            if (word.charAt(i) != label.charAt(i)) {
                 return i;
+            }
         }
-        return NO_MISMATCH;
+        return NO_DIFF;
     }
 
     private class Node implements Comparable<Node> {
+        // HashMap có key là character và value là một node
         private final HashMap<Character, Node> next;
         private Node parent;
         private V value;
+        // value là biến dùng để lưu trữ cho tùy mục đích của bài
         private String label;
-        public Node(V value, String label) {
+        public Node (V value, String label) {
             this.value = value;
             this.label = label;
             this.parent = null;
             next = new HashMap<>();
         }
 
-        public V getValue() {
-            return value;
-        }
-
-        public void setValue(V value) {
-            if(this.value == null)
-                this.value = value;
-            else System.out.println("This key "+ value.toString() +" has already exist");
-        }
-
-        public void clearValue() {
-            this.value = null;
-        }
-
-        public void setParent(Node parent) {
-            this.parent = parent;
+        public HashMap<Character, Node> getNext() {
+            return next;
         }
 
         public Node getParent() {
             return parent;
         }
 
+        public void setParent(Node parent) {
+            this.parent = parent;
+        }
+
+        public V getValue() {
+            return value;
+        }
+
+        public void clearValue() {
+            this.value = null;
+        }
+
+        public void setValue(V value) {
+            if (this.value == null)
+                this.value = value;
+            else System.out.println("This key "+ value.toString() +" has already exist");
+        }
+
         public String getLabel() {
             return label;
         }
 
+        public void setLabel(String label) {
+            this.label = label;
+        }
+
+        // Lấy node tiếp theo dựa trên 1 sâu
+        // ví dụ xâu AB lấy node tiếp theo của 'A' là node 'B'
         public Node getNextNode(Character transitionChar) {
             return next.get(transitionChar);
         }
 
         public void addNode(String label, V value) {
-            Node addedNode = new Node(value, label);
+            Node addedNode = new Node (value, label);
+            // thêm kí tự đầu tiên
             this.connectNode(label.charAt(0), addedNode);
         }
 
-        public void connectNode(Character transitionCHar, Node addedNode) {
-            next.put(transitionCHar, addedNode);
+        public void connectNode (Character trans, Node addedNode) {
+            // Gán giá trị của kí tự chuyển tiếp là node đươc thêm vào
+            next.put(trans, addedNode);
+            // nút cha của added là nút có kí tự chuyển tiếp ở trước
             addedNode.setParent(this);
         }
 
-        public void cutNode(Character transitionCHar, Node cuttedNode) {
-            next.remove(transitionCHar, cuttedNode);
+        public void cutNode (Character trans, Node cuttedNode) {
+            next.remove(trans, cuttedNode);
             cuttedNode.setParent(null);
         }
 
-        public Node splitNode(int splitPosition, V newValue) {
-            Node newNode = new Node(newValue, this.label.substring(0, splitPosition));
+        // cắt node ra thành [0,pos], [pos,end]
+        public Node splitNode (int splitPosition, V newVal) {
+            Node newNode = new Node(newVal, this.label.substring(0,splitPosition));
 
             this.label = this.label.substring(splitPosition);
             newNode.connectNode(this.label.charAt(0), this);
@@ -80,9 +100,11 @@ public class RadixTree<V> {
             return newNode;
         }
 
+        // Hợp con với cha lại
         public Node mergeParentNode() {
-            Node currParent = this.getParent();
-            this.label = currParent.getLabel().concat(this.label);
+            Node currPar = this.getParent();
+
+            this.label = currPar.getLabel().concat(this.label);
             return this;
         }
 
@@ -90,57 +112,63 @@ public class RadixTree<V> {
             return next.size();
         }
 
-
         public Collection<Node> getAllNextNode() {
             return next.values();
         }
-        @Override
+
+        // Hàm compareTo cho comparable
         public int compareTo(Node o) {
             return o.label.charAt(0) - this.label.charAt(0);
         }
     }
 
+    private final Node root;
+
     RadixTree() {
         root = new Node(null, null);
     }
-    private final Node root;
 
     void insert(String word, V value) {
-        word = "$" + word;
-        Node current = root;
-        int wordIndex = 0;
-        while (wordIndex < word.length()) {
-            Character transitionChar = word.charAt(wordIndex);
-            Node nextNode = current.getNextNode(transitionChar);
-            String currentString = word.substring(wordIndex);
+        // $ đánh dấu để phân biệt các node. Khi thêm một ký tự $ vào đầu chuỗi
+        // nó tạo ra một dấu phân biệt giữa nút đại diện cho từ gốc và nút đại diện cho các từ con của nó.
+        word = '$' + word;
+        Node curr = root;
+        int id = 0;
+        while (id < word.length()) {
+            Character trans = word.charAt(id);
+            Node nextNode = curr.getNextNode(trans);
+            String currString = word.substring(id);
 
             if(nextNode == null) {
-                current.addNode(currentString, value);
+                curr.addNode(currString, value);
                 break;
             }
-            int splitPosition = getFirstMismatchLetter(currentString, nextNode.getLabel());
-            if (splitPosition == NO_MISMATCH) {
-                if(currentString.length() == nextNode.getLabel().length()) {
+
+            int splitPos = getFirstMissMatchLetter(currString, nextNode.getLabel());
+            if (splitPos == NO_DIFF) {
+                if (currString.length() == nextNode.getLabel().length()) {
                     nextNode.setValue(value);
                     break;
-                } else if (currentString.length() < nextNode.getLabel().length()){
-                    nextNode = nextNode.splitNode(currentString.length(), value);
-                    current.connectNode(currentString.charAt(0),nextNode);
+                } else if (currString.length() < nextNode.getLabel().length()) {
+                    nextNode = nextNode.splitNode(currString.length(), value);
+                    curr.connectNode(currString.charAt(0), nextNode);
+                    break;
                 } else {
-                    splitPosition = nextNode.getLabel().length();
+                    splitPos = nextNode.getLabel().length();
                 }
-            } else{
-                nextNode = nextNode.splitNode(splitPosition, null);
-                current.connectNode(currentString.charAt(0), nextNode);
+            } else {
+                nextNode = nextNode.splitNode(splitPos, null);
+                curr.connectNode(currString.charAt(0), nextNode);
             }
 
-            wordIndex += splitPosition;
-            current = nextNode;
+            id = id + splitPos;
+            curr = nextNode;
         }
     }
 
     private static class Pair<K, V2> {
         private final K key;
+
         private final V2 value;
 
         Pair(K key, V2 value) {
@@ -149,35 +177,37 @@ public class RadixTree<V> {
         }
     }
 
-    private Pair<Node, String> prefixMatches(String prefix) {
+    private Pair<Node, String> preMatches(String prefix) {
         prefix = '$' + prefix;
-        Node current = root;
-        int wordIndex = 0;
-        while (wordIndex < prefix.length()) {
-            Character transitionChar = prefix.charAt(wordIndex);
-            Node nextNode = current.getNextNode(transitionChar);
-            if(nextNode == null) {
-                return new Pair<>(null,null);
+        Node curr = root;
+        int id = 0;
+        while (id < prefix.length()) {
+            Character trans = prefix.charAt(id);
+            Node nextNode = curr.getNextNode(trans);
+            if (nextNode == null) {
+                return new Pair <>(null,null);
             }
 
-            String currentString = prefix.substring(wordIndex);
-            int mismatchLetter = getFirstMismatchLetter(currentString, nextNode.getLabel());
-            if(mismatchLetter == NO_MISMATCH) {
-                if(currentString.length() <= nextNode.getLabel().length()) {
-                    return new Pair<>(nextNode, currentString);
+            // chuỗi con được lấy [id,end] từ chuỗi prefix
+            String currString = prefix.substring(id);
+            int missMatchLetter = getFirstMissMatchLetter(currString, nextNode.getLabel());
+            if (missMatchLetter == NO_DIFF) {
+                if (currString.length() <= nextNode.getLabel().length()) {
+                    return new Pair<>(nextNode, currString);
                 } else {
-                    mismatchLetter = nextNode.getLabel().length();
+                    missMatchLetter = nextNode.getLabel().length();
                 }
-            } else{
+            } else {
                 return new Pair<>(null, null);
             }
 
-            wordIndex += mismatchLetter;
-            current = nextNode;
+            id = id + missMatchLetter;
+            curr = nextNode;
         }
-        return new Pair<>(null,null);
+        return new Pair<>(null, null);
     }
 
+    // Truy xuất và in ra các giá trị/value sau từ một nút cụ thể
     private ArrayList<V> getWordsAfter(Node node, int limitWords) {
         if (node == null) {
             return new ArrayList<>();
@@ -186,11 +216,13 @@ public class RadixTree<V> {
         Stack<Node> stateStack = new Stack<>();
 
         stateStack.add(node);
-        while (!stateStack.empty() && resultArr.size() <= limitWords) {
+
+        while(!stateStack.empty() && resultArr.size() < limitWords) {
             Node currNode = stateStack.pop();
 
-            if (currNode.getValue() != null)
+            if(currNode.getValue() != null) {
                 resultArr.add(currNode.getValue());
+            }
 
             ArrayList<Node> nextNodes = new ArrayList<>(currNode.getAllNextNode());
             Collections.sort(nextNodes);
@@ -201,25 +233,20 @@ public class RadixTree<V> {
         }
         return resultArr;
     }
-    public V search(String word) {
-        Pair<Node, String> matches = prefixMatches(word);
-        if (matches.key == null) {
-            return null;
-        } else {
-            if (matches.key.getLabel().length() == matches.value.length())
-                return matches.key.value;
-            else
-                return null;
-        }
-    }
 
+
+    // Tìm kiếm tiền tố trong cây
     public ArrayList<V>prefixSearch(String prefix, int limitWords) {
-        Pair<Node, String> matches = prefixMatches(prefix);
+        Pair<Node, String> matches = preMatches(prefix);
         return getWordsAfter(matches.key, limitWords);
     }
 
+    // xóa
+
     public void delete(String word) {
-        Pair<Node, String> matches = prefixMatches(word);
+
+        Pair<Node, String> matches = preMatches(word);
+
         if (matches.key != null) {
             if (matches.key.getLabel().length() == matches.value.length()) {
                 Node current = matches.key;
@@ -237,5 +264,4 @@ public class RadixTree<V> {
             }
         }
     }
-
 }

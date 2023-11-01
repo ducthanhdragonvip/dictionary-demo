@@ -2,24 +2,24 @@ package database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
-/**
- * Class kết nối tới database
- */
 public class MysqlConnector {
-    //UserName Mysql
-    private static String userName = "root";
-    // Password Mysql
-    private static String password = "1234";
-    // localhost để kết nối đến MySql
-    private static String urlConnection = "jdbc:mysql://localhost:3307/ditc";
 
-    private static Connection connection;
+    // username và password đăng nhập vào mysql
+    private static String userName = "root";
+
+    private static String password = "T1vodich";
+
+    private static String urlConnection = "jdbc:mysql://localhost:3306/javafx?";
+
+    private static Connection hasConnect;
 
     public static void init() {
         try {
-            connection = DriverManager.getConnection(urlConnection, userName, password);
+            hasConnect = DriverManager.getConnection(urlConnection, userName, password);
         } catch (SQLException e) {
+            // Throw
             e.printStackTrace();
         }
     }
@@ -27,27 +27,25 @@ public class MysqlConnector {
         init();
     }
 
-    /**
-     * lấy data và đẩy từ vòa trong list
-     */
-
-    public static void takeDataToArray(ArrayList<WordModel> listWord) {
+    // Hàm lấy dữ liều và đẩy từ vào list
+    public static void takeData(ArrayList<WordModel> listWord) {
         try {
-            if(connection != null) {
-                System.out.println("Successful connect to database");
-                // tạo truy vấn
-                Statement statement = (Statement) connection.createStatement();
-                // lệnh truy vấn lấy tất cả dữ liệu từ bảng có trong kết nối
+            // Nếu kết nối
+            if (hasConnect != null) {
+                System.out.println("kết nối thành công");
+
+                // Tạo truy vấn thực hện với cơ sở dữ liệu
+                Statement statement = (Statement) hasConnect.createStatement();
                 String sql = "SELECT * FROM main";
-                // thực hiện truy vấn
+                // Thực hiện truy vấn
                 ResultSet rs = statement.executeQuery(sql);
-                // gán dữ liệu
-                while (rs.next()) {
-                    int index =rs.getInt("id");
-                    String word =rs.getString("word");
+                // nếu còn dữ liệu thì xử lí gán dữ liệu
+                while(rs.next()) {
+                    int id = rs.getInt("id");
+                    // lấy giá trị nguyên từ cột id đang đc chỉ tới
+                    String word = rs.getString("word");
                     String meaning = rs.getString("meaning");
-                    WordModel wordModel = new WordModel(index,word,meaning);
-                    // thêm từ vào ArrayList
+                    WordModel wordModel = new WordModel(id, word, meaning);
                     listWord.add(wordModel);
                 }
             }
@@ -57,5 +55,69 @@ public class MysqlConnector {
         }
     }
 
+    public static void addingWord(int id, String word, String meaning) {
+        try {
+            if (hasConnect != null) {
+                System.out.println("Đã kết nối đến cơ sở dữ liệu");
+            }
+            // truy vấn lấy id cuối danh sách
+            Statement statement = (Statement) hasConnect.createStatement();
+            String sql = "SELECT id FROM main ORDER BY id DESC LIMIT 1";
+            ResultSet rs = statement.executeQuery(sql);
+            int lastId = 0;
+            if(rs.next()) {
+                lastId = rs.getInt("id");
+            }
+            // Truy vấn thêm từ
+            PreparedStatement preparedStatement = hasConnect.prepareStatement("INSERT INTO main VALUES (?, ?, ?)");
+            preparedStatement.setInt(1, id); // gán giá trị thứ nhất là id
+            preparedStatement.setString(2, word); // gán tham số thứ 2 là word
+            preparedStatement.setString(3, meaning);
 
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            System.out.println("Lỗi ! Không thể kết nối đến mysql");
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteWord(int id) {
+        try {
+            // Nếu kết nối
+            if (hasConnect != null) {
+                System.out.println("kết nối thành công");
+
+                // Tạo truy vấn thực hện với cơ sở dữ liệu
+                //Statement statement = (Statement) hasConnect.createStatement();
+                String sql = "DELETE FROM main WHERE id = ?";
+                PreparedStatement statement = hasConnect.prepareStatement(sql);
+                // Đổi từ int -> id
+                statement.setString(1, String.valueOf(id));
+                statement.execute();
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi ! Không thể kết nối đến mysql");
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateWord(int id, String meaning) {
+        try {
+            if (hasConnect != null) {
+                System.out.println("Đã kết nối đến cơ sở dữ liệu");
+
+                String sql = "UPDATE main SET meaning = ? WHERE id = ?";
+                // Tạo truy vấn
+                PreparedStatement statement = hasConnect.prepareStatement(sql);
+                statement.setString(1, meaning);
+                statement.setInt(2, id);
+                statement.execute();
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi ! Không thể kết nối đến mysql");
+            e.printStackTrace();
+        }
+    }
 }

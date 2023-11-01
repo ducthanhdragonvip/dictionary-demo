@@ -1,14 +1,13 @@
 package database;
 
-/**
- * Class cho từ trong database
- */
 public class WordModel {
+    // Chỉ số trong csdl
     private int index;
+
     private String word;
     private String meaning;
 
-    public WordModel(int index,String word, String meaning) {
+    public WordModel(int index, String word, String meaning) {
         this.index = index;
         this.word = word;
         this.meaning = meaning;
@@ -37,6 +36,7 @@ public class WordModel {
     public void setMeaning(String meaning) {
         this.meaning = meaning;
     }
+
     @Override
     public String toString() {
         return word;
