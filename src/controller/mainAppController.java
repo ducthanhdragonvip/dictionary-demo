@@ -19,6 +19,7 @@ public class mainAppController implements Initializable {
     AnchorPane mainPane;
     AnchorPane searchPane;
     AnchorPane translatePane;
+    AnchorPane addWord;
 
     @FXML
     Button buttonGoBack;
@@ -47,6 +48,13 @@ public class mainAppController implements Initializable {
         }
         try {
             translatePane = FXMLLoader.load(getClass().getResource("/view/translatePane.fxml"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        try {
+            addWord = FXMLLoader.load(getClass().getResource("/view/addWord.fxml"));
+            String css = this.getClass().getResource("/styleFile/inviButton.css").toExternalForm();
+            addWord.getStylesheets().add(css);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -103,6 +111,7 @@ public class mainAppController implements Initializable {
     public void setBtnAdd(ActionEvent event) {
         btnDefault();
         btnFocus(btnAdd);
+        setMainPane(addWord);
     }
 
     public void setBtnConfig(ActionEvent event) {

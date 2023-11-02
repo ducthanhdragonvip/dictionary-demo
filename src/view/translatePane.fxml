@@ -21,7 +21,7 @@
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Text>
-      <Button layoutX="252.0" layoutY="296.0" mnemonicParsing="false" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/translateButton.css">
+      <Button layoutX="252.0" layoutY="296.0" mnemonicParsing="false" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,7 +30,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="326.0" layoutY="296.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #FCFCFD; -fx-background-radius: 4;" stylesheets="@../styleFile/translateButton.css" text="Translate" />
+      <Button layoutX="326.0" layoutY="296.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #FCFCFD; -fx-background-radius: 4;" stylesheets="@../styleFile/inviButton.css" text="Translate" />
       <Text layoutX="31.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="vi-Vietnam">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />

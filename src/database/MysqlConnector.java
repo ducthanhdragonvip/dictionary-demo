@@ -9,9 +9,9 @@ public class MysqlConnector {
     // username và password đăng nhập vào mysql
     private static String userName = "root";
 
-    private static String password = "T1vodich";
+    private static String password = "1234";
 
-    private static String urlConnection = "jdbc:mysql://localhost:3306/javafx?";
+    private static String urlConnection = "jdbc:mysql://localhost:3307/ditc?";
 
     private static Connection hasConnect;
 
