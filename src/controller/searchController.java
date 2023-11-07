@@ -1,5 +1,6 @@
 package controller;
 
+import api.VoiceRss;
 import database.DictionaryData;
 import database.WordModel;
 import javafx.fxml.FXML;
@@ -26,8 +27,32 @@ public class searchController implements Initializable {
     TextArea textShowMeaning;
     private WordModel selectedWord;
 
+    public void btnVoiceUKClick(MouseEvent mouseEvent) {
+        if (selectedWord == null) {
+            speak("Linda", "vi-vn", 0.85, "Bạn chưa chọn từ vựng, hãy chọn từ vựng trước !!");
+        } else {
+            speak("Chi", "en-gb", 0.85, selectedWord.getWord());
+        }
+    }
 
+    public void btnVoiceUSClick(MouseEvent mouseEvent) {
+        if (selectedWord == null) {
+            speak("Chi", "vi-vn", 0.85, "Bạn chưa chọn từ vựng, hãy chọn từ vựng trước !!");
+        } else {
+            speak("Linda", "en-gb", 0.85, selectedWord.getWord());
+        }
+    }
 
+    private void speak(String name, String language, double speed, String word) {
+        try {
+            VoiceRss.Name = name;
+            VoiceRss.language = language;
+            VoiceRss.speed = speed;
+            VoiceRss.speakWord(word);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         textShowMeaning.setEditable(false);
