@@ -31,7 +31,7 @@ public class searchController implements Initializable {
         if (selectedWord == null) {
             speak("Linda", "vi-vn", 0.85, "Bạn chưa chọn từ vựng, hãy chọn từ vựng trước !!");
         } else {
-            speak("Chi", "en-gb", 0.85, selectedWord.getWord());
+            speak("Alice", "en-gb", 0.85, selectedWord.getWord());
         }
     }
 
