@@ -28,7 +28,13 @@
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
       <version>20.0.1</version>
-    </dependency>
+    </dependency><dependency>
+          <groupId>com.sample</groupId>
+          <artifactId>sample</artifactId>
+          <version>1.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/lib/voicerss_tts.jar</systemPath>
+      </dependency>
 <dependency>
       <groupId>org.controlsfx</groupId>
       <artifactId>controlsfx</artifactId>
