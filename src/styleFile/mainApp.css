@@ -13,3 +13,7 @@
  .button:focus {
     -fx-background-color: #07f7f7;
  }
+ #addWordbtn {
+     -fx-translate-y: -2px;
+     -fx-background-radius: 10;
+ }

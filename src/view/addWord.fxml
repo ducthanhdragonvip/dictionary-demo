@@ -8,31 +8,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="1100.0" stylesheets="@../styleFile/inviButton.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="1100.0" stylesheets="@../styleFile/inviButton.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.addWordController">
    <children>
       <Text layoutX="41.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Word " wrappingWidth="89.33672714233398">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <TextField layoutX="215.0" layoutY="34.0" prefHeight="70.0" prefWidth="754.0">
+      <TextField fx:id="wordAddText" layoutX="215.0" layoutY="34.0" prefHeight="70.0" prefWidth="754.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Button layoutX="985.0" layoutY="49.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
+      <Button fx:id="btnClear" layoutX="985.0" layoutY="49.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
          <graphic>
-            <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="18.0" onMouseClicked="#btnClearClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/refresh-icon.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Text layoutX="41.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speech" wrappingWidth="142.13671493530273">
+      <Text fx:id="Classifier" layoutX="41.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Classifier" wrappingWidth="142.13671493530273">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <TextField layoutX="215.0" layoutY="156.0" prefHeight="70.0" prefWidth="754.0">
+      <TextField fx:id="classifier" layoutX="215.0" layoutY="156.0" prefHeight="70.0" prefWidth="754.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
@@ -41,7 +41,7 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <TextField layoutX="215.0" layoutY="276.0" prefHeight="70.0" prefWidth="754.0">
+      <TextField fx:id="pronunciation" layoutX="215.0" layoutY="276.0" prefHeight="70.0" prefWidth="754.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
@@ -50,36 +50,48 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <TextField alignment="TOP_LEFT" layoutX="215.0" layoutY="401.0" prefHeight="237.0" prefWidth="754.0">
+      <Button fx:id="btnClear1" layoutX="985.0" layoutY="170.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="18.0" onMouseClicked="#btnClearClick1" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/refresh-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnClear2" layoutX="985.0" layoutY="291.0" mnemonicParsing="false" onMouseClicked="#btnClearClick2" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/refresh-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnClear3" layoutX="985.0" layoutY="478.0" mnemonicParsing="false" onMouseClicked="#btnClearClick3" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/refresh-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="addWordbtn" layoutX="537.0" layoutY="610.0" mnemonicParsing="false" onMouseClicked="#btnAddWord" prefHeight="38.0" prefWidth="109.0" text="Add word">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/confirm-icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="meaningText" alignment="TOP_LEFT" layoutX="215.0" layoutY="436.0" prefHeight="161.0" prefWidth="754.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Button layoutX="985.0" layoutY="170.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/refresh-icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="985.0" layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/refresh-icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="985.0" layoutY="500.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 300; -fx-background-color: #FCFCFD;" stylesheets="@../styleFile/inviButton.css">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/refresh-icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
    </children>
 </AnchorPane>
