@@ -21,6 +21,10 @@ public class mainAppController implements Initializable {
     AnchorPane translatePane;
     AnchorPane addWord;
 
+    AnchorPane noteWord;
+
+    AnchorPane editPane;
+
     @FXML
     Button buttonGoBack;
     @FXML
@@ -42,6 +46,11 @@ public class mainAppController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            editPane = FXMLLoader.load(getClass().getResource("/view/editNdelete.fxml"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        try {
             searchPane = FXMLLoader.load(getClass().getResource("/view/searchScene.fxml"));
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -55,6 +64,12 @@ public class mainAppController implements Initializable {
             addWord = FXMLLoader.load(getClass().getResource("/view/addWord.fxml"));
             String css = this.getClass().getResource("/styleFile/inviButton.css").toExternalForm();
             addWord.getStylesheets().add(css);
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        try {
+            noteWord = FXMLLoader.load(getClass().getResource("/view/note.fxml"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -84,6 +99,7 @@ public class mainAppController implements Initializable {
     public void setBtnHome(ActionEvent event) {
         btnDefault();
         btnFocus(btnHome);
+
     }
 
     public void setBtnSearch (ActionEvent event) {
@@ -101,6 +117,7 @@ public class mainAppController implements Initializable {
     public void setBtnNote(ActionEvent event) {
         btnDefault();
         btnFocus(btnNote);
+        setMainPane(noteWord);
     }
 
     public void setBtnGame(ActionEvent event) {
@@ -117,9 +134,8 @@ public class mainAppController implements Initializable {
     public void setBtnConfig(ActionEvent event) {
         btnDefault();
         btnFocus(btnConfig);
+        setMainPane(editPane);
     }
-
-
 
     public void setButtonGoBack(ActionEvent event) {
         Stage getStage =(Stage) mainPane.getScene().getWindow();
