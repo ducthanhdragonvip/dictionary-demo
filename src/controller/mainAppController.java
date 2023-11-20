@@ -47,6 +47,8 @@ public class mainAppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             editPane = FXMLLoader.load(getClass().getResource("/view/editNdelete.fxml"));
+            String css = this.getClass().getResource("/styleFile/inviButton.css").toExternalForm();
+            editPane.getStylesheets().add(css);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

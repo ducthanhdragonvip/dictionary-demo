@@ -17,3 +17,22 @@
      -fx-translate-y: -2px;
      -fx-background-radius: 10;
  }
+
+ #btnEditWord {
+    -fx-translate-y: -2px;
+    -fx-background-radius: 10;
+ }
+
+ #btnDeleteWord {
+    -fx-translate-y: -2px;
+    -fx-background-radius: 10;
+ }
+
+ #btnCancel {
+    -fx-translate-y: -2px;
+    -fx-background-radius: 10;
+ }
+ #btnConfirm {
+    -fx-translate-y: -2px;
+    -fx-background-radius: 10;
+ }
