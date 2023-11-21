@@ -41,7 +41,6 @@ public class DictionaryApp extends Application {
         }
     }
     public void CloseRequest(Stage stage)  {
-
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         Image icon = new Image("image/icon1.png");
         ImageView warningPic = new ImageView(this.getClass().getResource("/image/warning.png").toString());
