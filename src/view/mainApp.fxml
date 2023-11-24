@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #E0FFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainAppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: E0FFFF ;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainAppController">
    <children>
       <BorderPane prefHeight="64.0" prefWidth="1280.0" style="-fx-background-color: #E0FFFF;" />
       <ImageView fitHeight="56.0" fitWidth="64.0" opacity="0.88" pickOnBounds="true" preserveRatio="true">
@@ -26,18 +26,6 @@
       <VBox layoutY="59.0" prefHeight="663.0" prefWidth="171.0">
          <children>
             <BorderPane prefHeight="33.0" prefWidth="180.0" />
-            <Button fx:id="btnHome" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setBtnHome" prefHeight="57.0" prefWidth="171.0" text="Home">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/home-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
-               </font>
-            </Button>
             <BorderPane prefHeight="20.0" prefWidth="180.0" />
             <Button fx:id="btnSearch" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" onAction="#setBtnSearch" prefHeight="57.0" prefWidth="171.0" text="Search">
                <graphic>

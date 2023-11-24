@@ -86,7 +86,7 @@ public class MysqlConnector {
         try {
             // Nếu kết nối
             if (hasConnect != null) {
-                System.out.println("kết nối thành công");
+                System.out.println("xóa thành công");
 
                 // Tạo truy vấn thực hện với cơ sở dữ liệu
                 //Statement statement = (Statement) hasConnect.createStatement();
