@@ -7,8 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 
 public class DictionaryApp extends Application {
@@ -22,7 +26,7 @@ public class DictionaryApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         /* make stage */
-        stage =primaryStage;
+        stage = primaryStage;
         try {
             Stage stage = new Stage();
             stage.setTitle("Dictionary App v1.0");

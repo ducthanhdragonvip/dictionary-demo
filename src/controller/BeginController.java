@@ -1,19 +1,48 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import main.DictionaryApp;
 
 public class BeginController {
     @FXML
     private Button BeginButton;
+    private Button playquizbtn;
+    @FXML
+    private void initialize() {
+        playquizbtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    Stage thisstage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+                    thisstage.close();
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("QuizC.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.initStyle(StageStyle.TRANSPARENT);
+                    scene.setFill(Color.TRANSPARENT);
+                    stage.show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 
     public void BeginButton(ActionEvent e) {
         Stage getStage = (Stage) BeginButton.getScene().getWindow();
