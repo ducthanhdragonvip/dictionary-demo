@@ -31,8 +31,7 @@ public class mainAppController implements Initializable {
     Button btnSearch;
     @FXML
     Button translateButton;
-    @FXML
-    Button btnHome;
+
     @FXML
     Button btnNote;
     @FXML
@@ -88,7 +87,6 @@ public class mainAppController implements Initializable {
         btnAdd.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
         btnGame.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
         btnNote.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
-        btnHome.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
         translateButton.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
         btnConfig.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
     }
@@ -98,11 +96,7 @@ public class mainAppController implements Initializable {
         mainPane.getChildren().addAll(pane);
     }
 
-    public void setBtnHome(ActionEvent event) {
-        btnDefault();
-        btnFocus(btnHome);
 
-    }
 
     public void setBtnSearch (ActionEvent event) {
         btnDefault();

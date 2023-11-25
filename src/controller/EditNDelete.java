@@ -76,9 +76,9 @@ public class EditNDelete implements Initializable {
         if (selectedWord != null) {
             DictionaryData.delete(selectedWord);
             selectedWord = null;
-            Alert("Xoá dữ liệu thành công", "Xem lại danh sách từ !!", "/image/btnConfirm.png");
+            Alert("Xoá dữ liệu thành công", "Xem lại danh sách từ !!", "/image/confirm-icon.png");
         } else {
-            Alert("Bạn chưa chọn dữ liệu trên bảng", "Hãy chọn dữ liệu trước !!", "/Image/warning.png");
+            Alert("Bạn chưa chọn dữ liệu trên bảng", "Hãy chọn dữ liệu trước !!", "/image/warning.png");
         }
     }
 
@@ -95,7 +95,7 @@ public class EditNDelete implements Initializable {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         // Lấy biểu tượng qua stage
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(this.getClass().getResource("/Image/icon-app.png").toString()));
+        stage.getIcons().add(new Image(this.getClass().getResource("/image/icon.png").toString()));
         // tạo ảnh cảnh báo trên alert
         ImageView warningPic = new ImageView(this.getClass().getResource(icon).toString());
         warningPic.setFitWidth(50);

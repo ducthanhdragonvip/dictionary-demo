@@ -37,7 +37,7 @@
                     <graphic>
                         <ImageView fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/edit.png" />
+                                <Image url="@../image/settings-icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -49,7 +49,7 @@
                     <graphic>
                         <ImageView fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/erase.png" />
+                                <Image url="@../image/delete-icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
