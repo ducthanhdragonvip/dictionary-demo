@@ -2,16 +2,17 @@ package controller;
 
 import api.VoiceRss;
 import database.DictionaryData;
+import database.NoteData;
 import database.WordModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import org.w3c.dom.events.Event;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.*;
@@ -27,6 +28,8 @@ public class searchController implements Initializable {
     TextArea textShowMeaning;
     private WordModel selectedWord;
 
+    public Stage stage;
+    NoteData Note;
     public void btnVoiceUKClick(MouseEvent mouseEvent) {
         if (selectedWord == null) {
             speak("Linda", "vi-vn", 0.85, "Bạn chưa chọn từ vựng, hãy chọn từ vựng trước !!");
@@ -73,4 +76,29 @@ public class searchController implements Initializable {
         }
     }
 
+    public void addWordEventHandle(MouseEvent e) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Image icon = new Image("image/icon1.png");
+        ImageView warningPic = new ImageView(this.getClass().getResource("/image/warning.png").toString());
+        warningPic.setFitWidth(100);
+        warningPic.setFitHeight(100);
+        alert.setGraphic(warningPic);
+        Stage stageAlert = (Stage) alert.getDialogPane().getScene().getWindow();
+        stageAlert.getIcons().add(icon);
+
+        alert.setTitle("Alert");
+        alert.setHeaderText("Bạn có muốn thêm từ không?");
+        alert.setContentText("Click \"Có\" to exit, click \"Không\" to return ");
+
+        String word = selectedWord.getWord();
+        String meaning = selectedWord.getMeaning();
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            insertWord(word,meaning);
+            stageAlert.close();
+        }
+    }
+
+    public void insertWord(String word, String meaning) {
+        NoteData.insertWord(word, meaning);
+    }
 }

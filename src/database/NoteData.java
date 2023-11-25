@@ -1,12 +1,30 @@
 package database;
 
-import java.util.ArrayList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
-public class NoteData {private static int idMax = 0;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+public class NoteData implements Initializable {
+    private static int idMax = 0;
     private static final RadixTree<WordModel> tree = new RadixTree<>();
+
+    @FXML
+    static ListView<WordModel> notesList;
+    @FXML
+    TextArea textShowMeaning;
+    private WordModel selectedWord;
 
     static {
         importFromDatabase();
+    }
+
+    public void initialize(URL location, ResourceBundle resources) {
+        reset();
     }
 
     public static void insertWord(String word, String meaning) {
@@ -18,6 +36,7 @@ public class NoteData {private static int idMax = 0;
     public static void delete(WordModel word) {
         tree.delete(new String(word.getWord() + String.valueOf(word.getIndex())).toLowerCase());
         MysqlConnector.deleteNote(word.getIndex());
+        reset();
     }
     public static void update(WordModel word, String newMeaning) {
         word.setMeaning(newMeaning);
@@ -38,5 +57,7 @@ public class NoteData {private static int idMax = 0;
         }
     }
 
-
+    public static void reset() {
+        if(notesList != null) notesList.getItems().addAll(NoteData.prefixSearch(""));
+    }
 }
