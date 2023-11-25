@@ -20,6 +20,7 @@ public class mainAppController implements Initializable {
     AnchorPane searchPane;
     AnchorPane translatePane;
     AnchorPane addWord;
+    AnchorPane gamePane;
 
     AnchorPane noteWord;
 
@@ -40,7 +41,6 @@ public class mainAppController implements Initializable {
     Button btnAdd;
     @FXML
     Button btnConfig;
-
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,6 +74,11 @@ public class mainAppController implements Initializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        try {
+            gamePane = FXMLLoader.load(getClass().getResource("/view/Quiz.fxml"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         setMainPane(searchPane);
     }
 
@@ -96,8 +101,6 @@ public class mainAppController implements Initializable {
         mainPane.getChildren().addAll(pane);
     }
 
-
-
     public void setBtnSearch (ActionEvent event) {
         btnDefault();
         btnFocus(btnSearch);
@@ -119,6 +122,7 @@ public class mainAppController implements Initializable {
     public void setBtnGame(ActionEvent event) {
         btnDefault();
         btnFocus(btnGame);
+        setMainPane(gamePane);
     }
 
     public void setBtnAdd(ActionEvent event) {
