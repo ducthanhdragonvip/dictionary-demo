@@ -5,30 +5,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="663.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuizController">
+<AnchorPane fx:id="mainPaneQuiz" prefHeight="663.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuizController">
    <children>
-      <Label fx:id="question" layoutX="94.0" layoutY="53.0" prefHeight="196.0" prefWidth="916.0" text="1. HOW MANY CONSOSANT ARE THERE IN THE ENGLISH ALPHABET ?">
+      <Label fx:id="question" layoutX="71.0" layoutY="36.0" prefHeight="196.0" prefWidth="916.0" text="1. HOW MANY CONSOSANT ARE THERE IN THE ENGLISH ALPHABET ?">
          <font>
             <Font name="Cambria" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="opt1" onAction="#opt1clicked" layoutX="128.0" layoutY="263.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
+      <Button fx:id="opt1" layoutX="71.0" layoutY="258.0" mnemonicParsing="false" onAction="#opt1clicked" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
          <font>
             <Font name="Comic Sans MS" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="opt2" onAction="#opt2clicked" layoutX="130.0" layoutY="466.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
+      <Button fx:id="opt2" layoutX="71.0" layoutY="464.0" mnemonicParsing="false" onAction="#opt2clicked" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
          <font>
             <Font name="Comic Sans MS" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="opt3" onAction="#opt3clicked" layoutX="622.0" layoutY="259.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
+      <Button fx:id="opt3" layoutX="560.0" layoutY="258.0" mnemonicParsing="false" onAction="#opt3clicked" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
          <font>
             <Font name="Comic Sans MS" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="opt4" onAction="#opt4clicked" layoutX="614.0" layoutY="464.0" mnemonicParsing="false" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
+      <Button fx:id="opt4" layoutX="560.0" layoutY="464.0" mnemonicParsing="false" onAction="#opt4clicked" prefHeight="147.0" prefWidth="396.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 90px;" text="Button">
          <font>
             <Font name="Comic Sans MS" size="36.0" />
          </font>
