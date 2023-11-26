@@ -6,7 +6,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
 public class ResultController {
-
     @FXML
     public Label markstext;
 
