@@ -9,9 +9,9 @@ public class MysqlConnector {
     // username và password đăng nhập vào mysql
     private static String userName = "root";
 
-    private static String password = "T1vodich";
+    private static String password = "Tuananh2004@";
 
-    private static String urlConnection = "jdbc:mysql://localhost:3306/javafx?";
+    private static String urlConnection = "jdbc:mysql://localhost:3306/new_schema?";
 
     private static Connection hasConnect;
 
@@ -134,7 +134,7 @@ public class MysqlConnector {
                 ResultSet rs = statement.executeQuery(sql);
                 // nếu còn dữ liệu thì xử lí gán dữ liệu
                 while(rs.next()) {
-                    int id = rs.getInt("idNote");
+                    int id = rs.getInt("id");
                     // lấy giá trị nguyên từ cột id đang đc chỉ tới
                     String word = rs.getString("word");
                     String meaning = rs.getString("meaning");
@@ -155,13 +155,13 @@ public class MysqlConnector {
             }
             // truy vấn lấy id cuối danh sách
             Statement statement = (Statement) hasConnect.createStatement();
-            String sql = "SELECT idNote FROM notes ORDER BY idNote DESC LIMIT 1";
+            String sql = "SELECT id FROM notes ORDER BY id DESC LIMIT 1";
             ResultSet rs = statement.executeQuery(sql);
 
 
             int lastId = 0;
             if(rs.next()) {
-                lastId = rs.getInt("idNote");
+                lastId = rs.getInt("id");
             }
             System.out.println(lastId);
             // Truy vấn thêm từ
@@ -187,7 +187,7 @@ public class MysqlConnector {
 
                 // Tạo truy vấn thực hện với cơ sở dữ liệu
                 //Statement statement = (Statement) hasConnect.createStatement();
-                String sql = "DELETE FROM notes WHERE idNote = ?";
+                String sql = "DELETE FROM notes WHERE id = ?";
                 PreparedStatement statement = hasConnect.prepareStatement(sql);
                 // Đổi từ int -> id
                 statement.setString(1, String.valueOf(id));
@@ -204,7 +204,7 @@ public class MysqlConnector {
             if (hasConnect != null) {
                 System.out.println("Đã kết nối đến cơ sở dữ liệu");
 
-                String sql = "UPDATE notes SET meaning = ? WHERE idNote = ?";
+                String sql = "UPDATE notes SET meaning = ? WHERE id = ?";
                 // Tạo truy vấn
                 PreparedStatement statement = hasConnect.prepareStatement(sql);
                 statement.setString(1, meaning);

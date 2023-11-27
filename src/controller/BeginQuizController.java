@@ -34,5 +34,4 @@ public class BeginQuizController implements Initializable {
         setMainPane(quizPane);
     }
 
-
 }

@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,13 +10,34 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
-public class QuizController {
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
+public class QuizController  {
+    @FXML
+    AnchorPane mainPaneQuiz;
+    @FXML
+    AnchorPane resultPane;
+
+    public void setMainPane(AnchorPane pane) {
+        mainPaneQuiz.getChildren().clear();
+        mainPaneQuiz.getChildren().addAll(pane);
+    }
     @FXML
     public Label question;
 
@@ -24,6 +47,20 @@ public class QuizController {
     int counter = 0;
     static int correct = 0;
     static int wrong = 0;
+
+    public void playSound(String soundFilePath) {
+        try {
+            URL soundFileUrl = getClass().getResource(soundFilePath);
+            File soundFile = new File(soundFileUrl.toURI());
+
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException | java.net.URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void initialize() {
@@ -106,32 +143,38 @@ public class QuizController {
 
     @FXML
     public void opt1clicked(ActionEvent actionEvent) {
-        checkAnswer(opt1.getText().toString());
-        if (checkAnswer(opt1.getText().toString())) {
+        boolean isCorrect = checkAnswer(opt1.getText().toString());
+        if (isCorrect) {
             correct = correct + 1;
+            opt1.setStyle("-fx-background-color: green; -fx-background-radius: 90px");
+            playSound("/audio/correct_sound_effect.wav"); // Chơi âm thanh khi đúng
         } else {
             wrong = wrong + 1;
+            opt1.setStyle("-fx-background-color: red; -fx-background-radius: 90px");
+            playSound("/audio/wrong_sound_effect.wav"); // Chơi âm thanh khi sai
         }
-        if (counter == 9) {
-            try {
-                System.out.println(correct);
-                Stage thisstage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-                thisstage.close();
-                FXMLLoader quiz = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene quizscene = new Scene(quiz.load());
-                quizscene.setFill(Color.TRANSPARENT);
-                Stage quizstage = new Stage();
-                quizstage.setScene(quizscene);
-                quizstage.initStyle(StageStyle.TRANSPARENT);
-                quizstage.show();
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            counter++;
-            loadQuestions();
-        }
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(2), e -> {
+                    opt1.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
+
+                    if (counter == 9) {
+                        try {
+                            resultPane = FXMLLoader.load(getClass().getResource("/view/result.fxml"));
+                            setMainPane(resultPane);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    } else {
+                        counter++;
+                        loadQuestions();
+                    }
+                })
+        );
+        timeline.setCycleCount(1);
+        timeline.play();
     }
+
 
     boolean checkAnswer(String answer) {
 
@@ -212,88 +255,103 @@ public class QuizController {
 
     @FXML
     public void opt2clicked(ActionEvent actionEvent) {
-        checkAnswer(opt2.getText().toString());
-        if (checkAnswer(opt2.getText().toString())) {
+        boolean isCorrect = checkAnswer(opt2.getText().toString());
+        if (isCorrect) {
             correct = correct + 1;
+            opt2.setStyle("-fx-background-color: green; -fx-background-radius: 90px");
+            playSound("/audio/correct_sound_effect.wav"); // Chơi âm thanh khi đúng
         } else {
             wrong = wrong + 1;
+            opt2.setStyle("-fx-background-color: red; -fx-background-radius: 90px");
+            playSound("/audio/wrong_sound_effect.wav"); // Chơi âm thanh khi sai
         }
-        if (counter == 9) {
-            try {
-                System.out.println(correct);
-                Stage thisstage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-                thisstage.close();
-                FXMLLoader quiz = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene quizscene = new Scene(quiz.load());
-                quizscene.setFill(Color.TRANSPARENT);
-                Stage quizstage = new Stage();
-                quizstage.setScene(quizscene);
-                quizstage.initStyle(StageStyle.TRANSPARENT);
-                quizstage.show();
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            counter++;
-            loadQuestions();
-        }
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(2), e -> {
+                    opt2.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
+
+                    if (counter == 9) {
+                        try {
+                            resultPane = FXMLLoader.load(getClass().getResource("/view/result.fxml"));
+                            setMainPane(resultPane);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    } else {
+                        counter++;
+                        loadQuestions();
+                    }
+                })
+        );
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 
     @FXML
     public void opt3clicked(ActionEvent actionEvent) {
-        checkAnswer(opt3.getText().toString());
-        if (checkAnswer(opt3.getText().toString())) {
+        boolean isCorrect = checkAnswer(opt3.getText().toString());
+        if (isCorrect) {
             correct = correct + 1;
+            opt3.setStyle("-fx-background-color: green; -fx-background-radius: 90px");
+            playSound("/audio/correct_sound_effect.wav"); // Chơi âm thanh khi sai
         } else {
             wrong = wrong + 1;
+            opt3.setStyle("-fx-background-color: red; -fx-background-radius: 90px");
+            playSound("/audio/wrong_sound_effect.wav"); // Chơi âm thanh khi sai
         }
-        if (counter == 9) {
-            try {
-                System.out.println(correct);
-                Stage thisstage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-                thisstage.close();
-                FXMLLoader quiz = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene quizscene = new Scene(quiz.load());
-                quizscene.setFill(Color.TRANSPARENT);
-                Stage quizstage = new Stage();
-                quizstage.setScene(quizscene);
-                quizstage.initStyle(StageStyle.TRANSPARENT);
-                quizstage.show();
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            counter++;
-            loadQuestions();
-        }
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(2), e -> {
+                    opt3.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
+
+                    if (counter == 9) {
+                        try {
+                            resultPane = FXMLLoader.load(getClass().getResource("/view/result.fxml"));
+                            setMainPane(resultPane);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    } else {
+                        counter++;
+                        loadQuestions();
+                    }
+                })
+        );
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 
     @FXML
     public void opt4clicked(ActionEvent actionEvent) {
-        checkAnswer(opt4.getText().toString());
-        if (checkAnswer(opt4.getText().toString())) {
+        boolean isCorrect = checkAnswer(opt4.getText().toString());
+        if (isCorrect) {
             correct = correct + 1;
+            opt4.setStyle("-fx-background-color: green; -fx-background-radius: 90px");
+            playSound("/audio/correct_sound_effect.wav"); // Chơi âm thanh khi sai
         } else {
             wrong = wrong + 1;
+            opt4.setStyle("-fx-background-color: red; -fx-background-radius: 90px");
+            playSound("/audio/wrong_sound_effect.wav"); // Chơi âm thanh khi sai
         }
-        if (counter == 9) {
-            try {
-                System.out.println(correct);
-                Stage thisstage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
-                thisstage.close();
-                FXMLLoader quiz = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene quizscene = new Scene(quiz.load());
-                quizscene.setFill(Color.TRANSPARENT);
-                Stage quizstage = new Stage();
-                quizstage.setScene(quizscene);
-                quizstage.initStyle(StageStyle.TRANSPARENT);
-                quizstage.show();
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            counter++;
-            loadQuestions();
-        }
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(2), e -> {
+                    opt4.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
+
+                    if (counter == 9) {
+                        try {
+                            resultPane = FXMLLoader.load(getClass().getResource("/view/result.fxml"));
+                            setMainPane(resultPane);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    } else {
+                        counter++;
+                        loadQuestions();
+                    }
+                })
+        );
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 }
