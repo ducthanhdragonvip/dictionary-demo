@@ -125,7 +125,7 @@ public class QuizController  {
         }
 
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2), e -> {
+                new KeyFrame(Duration.seconds(1.25), e -> {
                     opt1.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
 
                     if (counter == 9) {
@@ -159,7 +159,7 @@ public class QuizController  {
         }
 
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2), e -> {
+                new KeyFrame(Duration.seconds(1.25), e -> {
                     opt2.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
 
                     if (counter == 9) {
@@ -193,7 +193,7 @@ public class QuizController  {
         }
 
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2), e -> {
+                new KeyFrame(Duration.seconds(1.25), e -> {
                     opt3.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
 
                     if (counter == 9) {
@@ -227,7 +227,7 @@ public class QuizController  {
         }
 
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2), e -> {
+                new KeyFrame(Duration.seconds(1.25), e -> {
                     opt4.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
 
                     if (counter == 9) {
