@@ -33,7 +33,6 @@ public class paragraphTranslateController implements Initializable {
     private Text langTo;
 
     public void initialize(URL location, ResourceBundle resources) {
-        // Không cho sử dụng TAB
         btnTrans.setFocusTraversable(false);
     }
 
