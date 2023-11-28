@@ -21,18 +21,23 @@
  #btnEditWord {
     -fx-translate-y: -2px;
     -fx-background-radius: 10;
+    -fx-background-color: #FCFCFD;
  }
 
  #btnDeleteWord {
     -fx-translate-y: -2px;
     -fx-background-radius: 10;
+    -fx-background-color: #FCFCFD;
  }
 
  #btnCancel {
     -fx-translate-y: -2px;
     -fx-background-radius: 10;
+    -fx-background-color: #FCFCFD;
  }
  #btnConfirm {
     -fx-translate-y: -2px;
     -fx-background-radius: 10;
+    -fx-background-color: #FCFCFD;
  }
+

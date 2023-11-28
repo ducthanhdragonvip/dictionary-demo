@@ -58,7 +58,7 @@
                     <graphic>
                         <ImageView fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/done.png" />
+                                <Image url="@../image/confirm-icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -67,7 +67,7 @@
                     <graphic>
                         <ImageView fitHeight="34.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../image/deny.png" />
+                                <Image url="@../image/abort-icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
