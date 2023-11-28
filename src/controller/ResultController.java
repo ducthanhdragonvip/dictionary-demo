@@ -44,6 +44,7 @@ public class ResultController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        QuizController.correct = 0;
         setMainPane(beginPaneQuiz);
     }
 }
