@@ -29,7 +29,6 @@ public class QuizController  {
     AnchorPane mainPaneQuiz;
     @FXML
     AnchorPane resultPane;
-
     public void setMainPane(AnchorPane pane) {
         mainPaneQuiz.getChildren().clear();
         mainPaneQuiz.getChildren().addAll(pane);
@@ -43,13 +42,17 @@ public class QuizController  {
     private int currentQuestionIndex = 0;
     private List<QuizSet> quizSets = new ArrayList<>();
 
-    Random random = new Random();
+    static Random random = new Random();
     int selectedQuizIndex = random.nextInt(5);
+    int oldIndex = selectedQuizIndex;
     static int correct = 0;
     static int wrong = 0;
 
     @FXML
     private void initialize() {
+        while(selectedQuizIndex == oldIndex) {
+            selectedQuizIndex = random.nextInt(5);
+        }
         loadQuizSets();
     }
 
@@ -281,8 +284,6 @@ public class QuizController  {
 
 
 
-
-
         // Tạo bộ câu hỏi và thêm vào danh sách bộ câu hỏi
         QuizSet quizSet1 = new QuizSet(questionsSet1, optionsSet1, correctAnswersSet1);
         quizSets.add(quizSet1);
@@ -304,6 +305,7 @@ public class QuizController  {
         QuizSet selectedQuiz = quizSets.get(selectedQuizIndex);
         showQuestion(selectedQuiz);
     }
+
 
     private void showQuestion(QuizSet quizSet) {
         List<String> questions = quizSet.getQuestions();
