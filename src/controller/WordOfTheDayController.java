@@ -48,7 +48,6 @@ public class WordOfTheDayController {
             pronunciationLabel.setText(pronunciationElement.text());
             partOfSpeechLabel.setText(partOfSpeechElement.text());
             meaningLabel.setText(meaningElement.text());
-            System.out.println(pronunciationElement.text());
         } catch (Exception e) {
             e.printStackTrace();
             // Handle exceptions appropriately
