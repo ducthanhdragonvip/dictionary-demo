@@ -396,22 +396,6 @@ public class QuizController  {
         timeline.play();
     }
 
-    private void setOptionStyles(boolean isCorrect) {
-        Button selectedOptionButton = null;
-        if (isCorrect) {
-            selectedOptionButton = getSelectedOptionButton();
-            selectedOptionButton.setStyle("-fx-background-color: green; -fx-background-radius: 90px");
-        } else {
-            getSelectedOptionButton().setStyle("-fx-background-color: red; -fx-background-radius: 90px");
-        }
-    }
-
-    private void resetOptionStyles() {
-        for (Button optionButton : Arrays.asList(opt1, opt2, opt3, opt4)) {
-            optionButton.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
-        }
-    }
-
     private Button getSelectedOptionButton() {
         if (opt1.isArmed()) {
             return opt1;
@@ -424,5 +408,41 @@ public class QuizController  {
         }
         return null;
     }
+
+    private Button getCorrectOptionButton() {
+        String correctAnswer = quizSets.get(selectedQuizIndex).getCorrectAnswers().get(currentQuestionIndex);
+        if (opt1.getText().equals(correctAnswer)) {
+            return opt1;
+        } else if (opt2.getText().equals(correctAnswer)) {
+            return opt2;
+        } else if (opt3.getText().equals(correctAnswer)) {
+            return opt3;
+        } else if (opt4.getText().equals(correctAnswer)) {
+            return opt4;
+        }
+
+        return null;
+    }
+
+    private void setOptionStyles(boolean isCorrect) {
+        Button selectedOptionButton = getSelectedOptionButton();
+        if (isCorrect) {
+            selectedOptionButton.setStyle("-fx-background-color: green; -fx-background-radius: 90px");
+        } else {
+            Button correctOptionButton = getCorrectOptionButton();
+            if (correctOptionButton != null) {
+                correctOptionButton.setStyle("-fx-background-color: yellow; -fx-background-radius: 90px");
+            }
+            selectedOptionButton.setStyle("-fx-background-color: red; -fx-background-radius: 90px");
+        }
+    }
+
+    private void resetOptionStyles() {
+        for (Button optionButton : Arrays.asList(opt1, opt2, opt3, opt4)) {
+            optionButton.setStyle("-fx-background-color: dodgerblue; -fx-background-radius: 90px");
+        }
+    }
+
+
 
 }
