@@ -25,9 +25,21 @@
       </Text>
       <VBox layoutY="59.0" prefHeight="663.0" prefWidth="171.0">
          <children>
-            <BorderPane prefHeight="33.0" prefWidth="180.0" />
             <BorderPane prefHeight="20.0" prefWidth="180.0" />
-            <Button fx:id="btnSearch" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" onAction="#setBtnSearch" prefHeight="57.0" prefWidth="171.0" text="Search">
+            <Button fx:id="btnHome" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" onAction="#setBtnHome" prefHeight="57.0" prefWidth="171.0" text="Home">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/home-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <BorderPane layoutX="10.0" layoutY="378.0" prefHeight="20.0" prefWidth="180.0" />
+            <Button fx:id="btnSearch" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setBtnSearch" prefHeight="57.0" prefWidth="171.0" text="Search">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -21,7 +21,7 @@ public class mainAppController implements Initializable {
     AnchorPane translatePane;
     AnchorPane addWord;
     AnchorPane gamePane;
-
+    AnchorPane homePane;
     AnchorPane noteWord;
 
     AnchorPane editPane;
@@ -32,6 +32,8 @@ public class mainAppController implements Initializable {
     Button btnSearch;
     @FXML
     Button translateButton;
+    @FXML
+    Button btnHome;
 
     @FXML
     Button btnNote;
@@ -51,6 +53,12 @@ public class mainAppController implements Initializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        try {
+            homePane = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         try {
             searchPane = FXMLLoader.load(getClass().getResource("/view/searchScene.fxml"));
         } catch (Exception ex) {
@@ -87,6 +95,7 @@ public class mainAppController implements Initializable {
     }
 
     public void btnDefault() {
+        btnHome.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
         buttonGoBack.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
         btnSearch.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
         btnAdd.setStyle("-fx-background-color: #E0FFFF;-fx-background-radius: 0 20 20 0;");
@@ -101,6 +110,11 @@ public class mainAppController implements Initializable {
         mainPane.getChildren().addAll(pane);
     }
 
+    public void setBtnHome(ActionEvent event) {
+        btnDefault();
+        btnFocus(btnHome);
+        setMainPane(homePane);
+    }
     public void setBtnSearch (ActionEvent event) {
         btnDefault();
         btnFocus(btnSearch);
