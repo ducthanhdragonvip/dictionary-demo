@@ -54,7 +54,7 @@ public class mainAppController implements Initializable {
             ex.printStackTrace();
         }
         try {
-            homePane = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
+            homePane = FXMLLoader.load(getClass().getResource("/view/WordOfTheDay.fxml"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
