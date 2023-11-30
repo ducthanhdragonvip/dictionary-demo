@@ -18,22 +18,22 @@
    </HBox>
 
    <VBox alignment="TOP_CENTER" prefHeight="278.0" prefWidth="1070.0" spacing="20">
-      <Label style="-fx-font-size: 80px;" text="Word of the Day" />
+      <Label style="-fx-font-size: 80px; -fx-font-family: Algerian; -fx-font-weight: bold ;" text="Word of the Day" />
       <Label fx:id="wordLabel" style="-fx-font-size: 20px;" />
       <HBox alignment="CENTER" spacing="10">
-         <Label style="-fx-font-size: 18px;" text="How it spells:" />
+         <Label style="-fx-font-size: 18px; -fx-font-style: italic ;" text="How it spells:" />
          <Label fx:id="pronunciationLabel" style="-fx-font-size: 18px;" />
       </HBox>
       <Label fx:id="partOfSpeechLabel" style="-fx-font-size: 16px;" />
       <HBox alignment="CENTER" spacing="10">
-         <Label style="-fx-font-size: 16px;" text="What it means:" />
+         <Label style="-fx-font-size: 16px; -fx-font-style: italic ;" text="What it means:" />
          <Label fx:id="meaningLabel" style="-fx-font-size: 16px;" />
       </HBox>
       <HBox alignment="CENTER" spacing="10">
-         <Label style="-fx-font-size: 16px;" text="Example:" />
+         <Label style="-fx-font-size: 16px; -fx-font-style: italic ;" text="Example:" />
          <Label fx:id="Example" style="-fx-font-size: 16px;" />
       </HBox>
-      <Label style="-fx-font-size: 16px; -fx-wrap-text: true;" text="WORD in Context: " />
+      <Label style="-fx-font-size: 16px; -fx-wrap-text: true; -fx-font-style: italic; -fx-font-family: 'Agency FB'; -fx-font-weight: bold ;" text="WORD in Context: " />
       <TextArea fx:id="contextLabel" style="-fx-font-size: 16px; -fx-wrap-text: true;" prefWidth="800" prefHeight="400" />
    </VBox>
 
