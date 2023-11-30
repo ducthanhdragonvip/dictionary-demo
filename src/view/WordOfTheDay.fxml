@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TextArea?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WordOfTheDayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WordOfTheDayController">
 
 
    <HBox alignment="TOP_RIGHT" spacing="10">
@@ -34,8 +36,39 @@
          <Label fx:id="Example" style="-fx-font-size: 16px;" />
       </HBox>
       <Label style="-fx-font-size: 16px; -fx-wrap-text: true; -fx-font-style: italic; -fx-font-family: 'Agency FB'; -fx-font-weight: bold ;" text="WORD in Context: " />
-      <TextArea fx:id="contextLabel" style="-fx-font-size: 16px; -fx-wrap-text: true;" prefWidth="800" prefHeight="400" />
+      <TextArea fx:id="contextLabel" prefHeight="128.0" prefWidth="1070.0" style="-fx-font-size: 16px; -fx-wrap-text: true;" />
    </VBox>
+   <ImageView fitHeight="115.0" fitWidth="115.0" layoutX="890.0" layoutY="503.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/dictionary.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="36.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/study.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="427.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true" />
+   <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="427.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/Lovepik_com-401533354-red-decorative-pattern.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="646.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/Lovepik_com-401533354-red-decorative-pattern.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="206.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/Lovepik_com-401533354-red-decorative-pattern.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="467.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/dictionary2.png" />
+      </image>
+   </ImageView>
 
    <stylesheets>
       <!-- If you have a CSS stylesheet, you can reference it here -->
