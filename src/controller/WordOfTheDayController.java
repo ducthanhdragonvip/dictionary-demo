@@ -15,6 +15,9 @@ public class WordOfTheDayController {
     private Label pronunciationLabel;
     @FXML
     private Label partOfSpeechLabel;
+
+    @FXML
+    private Label exampleLable;
     @FXML
     private Label meaningLabel;
     @FXML
@@ -38,11 +41,12 @@ public class WordOfTheDayController {
             // The word on the website
             Element wordElement = doc.select("div.word-and-pronunciation h2").first();
             // Phiên âm
+
             Element pronunciationElement = doc.select("div.word-attributes span.word-syllables").first();
             //Noun, adjectives, verb
             Element partOfSpeechElement = doc.select("div.word-attributes span.main-attr").first();
 
-
+            Element exampleLabelElement =  doc.select("body > div.outer-container > div > div.main-wrapper.clearfix > main > article > div.lr-cols-area.clearfix.sticky-column.d-flex > div.left-content > div > div.wod-definition-container > p:nth-child(3)").first();
 
             Element meaningElement = doc.select("div.wod-definition-container p:first-of-type").first();
 
@@ -50,6 +54,7 @@ public class WordOfTheDayController {
             wordLabel.setText(wordElement.text());
             pronunciationLabel.setText(pronunciationElement.text());
             partOfSpeechLabel.setText(partOfSpeechElement.text());
+            exampleLable.setText(exampleLabelElement.text());
             meaningLabel.setText(meaningElement.text());
         } catch (Exception e) {
             e.printStackTrace();

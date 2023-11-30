@@ -28,7 +28,13 @@
          <Label style="-fx-font-size: 16px;" text="What it means:" />
          <Label fx:id="meaningLabel" style="-fx-font-size: 16px;" />
       </HBox>
+
+      <HBox alignment="CENTER" spacing="10">
+         <Label style="-fx-font-size: 16px;" text="Example:" />
+         <Label fx:id="exampleLable" style="-fx-font-size: 16px;" />
+      </HBox>
    </VBox>
+
 
    <stylesheets>
       <!-- If you have a CSS stylesheet, you can reference it here -->
